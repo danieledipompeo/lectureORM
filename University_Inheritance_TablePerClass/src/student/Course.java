@@ -19,8 +19,7 @@ public class Course {
 	@Column(name="Name")
 	private String courseName;
 
-	public Course() {
-	}
+	public Course() {}
 
 	public Course(String courseName) {
 		this.courseName = courseName;

@@ -14,5 +14,7 @@
         <many-to-one name="studentAddress" class="student.Address" fetch="join" cascade="all" unique="true" not-null="true">
             <column name="STUDENTADDRESS" />
         </many-to-one>
+        <one-to-one name="transcript" class="student.Transcript" 
+        		fetch="join" lazy="proxy" cascade="all"></one-to-one>
     </class>
 </hibernate-mapping>

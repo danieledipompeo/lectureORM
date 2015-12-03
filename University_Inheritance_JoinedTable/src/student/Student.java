@@ -3,7 +3,10 @@ package student;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -15,6 +18,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Students")
+@AttributeOverrides({
+	@AttributeOverride(name="personId", column=@Column(name="ID"))
+})
 public class Student extends Person{
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

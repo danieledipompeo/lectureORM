@@ -22,15 +22,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Students")
 @AttributeOverrides({
+	@AttributeOverride(name="personId", column=@Column(name="ID")),
 	@AttributeOverride(name="personAddress", column=@Column(name="AddressID")),
 	@AttributeOverride(name="name", column=@Column(name="Name")),
 })
 public class Student extends Person{
-	
-//	@Id
-//	@Column(name = "ID")
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private long studentId;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "TranscriptID")
