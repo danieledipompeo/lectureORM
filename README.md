@@ -4,6 +4,7 @@
 Materiale utile per il seminario su Hibernate per il corso di Ingegneria del Software di Ingegneria Informatica ed Automatica A.A 2015/2016.
 
 Il seminario prevede come pre-requisiti la conoscenza di:
+
 1. Ambiente di sviluppo Eclipse (utilizzata la versione Mars)
 2. MySQL come R-DBMS.
 
@@ -44,6 +45,6 @@ Per i prinmi 4 progetti e' stato utilizzato un solo database "university_basic".
 
 Per i restati progetti e' stato creato un database per ogni progetto con il seguente pattern
 
-- unisersity_\<nome_pregetto\>
+- university_\<nome_pregetto\>
 
 utilizzando le stesse credenziali dei precedenti progetti.
