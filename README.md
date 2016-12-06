@@ -1,7 +1,7 @@
 # lectureORM
 
 ## Introduzione
-Materiale utile per il seminario su Hibernate per il corso di Ingegneria del Software di Ingegneria Informatica ed Automatica A.A 2015/2016.
+Materiale utile per il seminario su Hibernate per il corso di Ingegneria del Software di Ingegneria Informatica ed Automatica A.A 2016/2017 e A.A. 2015/2016
 
 Il seminario prevede come pre-requisiti la conoscenza di:
 
