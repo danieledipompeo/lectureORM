@@ -29,9 +29,9 @@ public class Main {
 			
 			Transcript transcript1 = new Transcript("swr12");
 //Student(String studentName, Transcript transcript, Set<Phone> studentPhoneNumbers, Address studentAddress,Set<Course> courses)
-			Student student1 = new Student("Eswar", transcript1, null, null, null);
+			Student student1 = new Student("Eswar", transcript1, null, null);
 			Transcript transcript2 = new Transcript("dnl21");
-			Student student2 = new Student("Daniel", transcript2, null, null, null);
+			Student student2 = new Student("Daniel", transcript2, null, null);
 			session.save(student1);
 			session.save(student2);
 			
@@ -43,12 +43,10 @@ public class Main {
 			List<Student> students = (List<Student>) criteria.list();
 			
 			for(Student student : students){
-				Set<Phone> phoneNumbers = new HashSet<Phone>();
-				Phone house = new Phone("house","32354353");
-				Phone mobile = new Phone("mobile","32354353");
-				phoneNumbers.add(house);
-				phoneNumbers.add(mobile);
-				student.setStudentPhoneNumbers(phoneNumbers);
+				Phone house = new Phone("house","32354353", student);
+				session.save(house);
+				Phone mobile = new Phone("mobile","32354353", student);
+				session.save(mobile);
 				student.setCourses(courses);
 				student.setPersonAddress(address);
 				session.save(student);

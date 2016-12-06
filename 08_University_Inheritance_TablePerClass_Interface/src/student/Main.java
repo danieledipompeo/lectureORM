@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import util.HibernateUtil;
@@ -42,12 +43,10 @@ public class Main {
 
 			boolean first = false;
 			for (Student student : students) {
-				Set<Phone> phoneNumbers = new HashSet<Phone>();
-				Phone house = new Phone("house", "32354353");
-				Phone mobile = new Phone("mobile", "32354353");
-				phoneNumbers.add(house);
-				phoneNumbers.add(mobile);
-				student.setStudentPhoneNumbers(phoneNumbers);
+				Phone house = new Phone("house","32354353", student);
+				session2.save(house);
+				Phone mobile = new Phone("mobile","32354353", student);
+				session2.save(mobile);
 				Set<Course> courses = new HashSet<Course>();
 				courses.add(new BaseCourse("Maths"));
 				courses.add(new BaseCourse("Computer Science"));
@@ -69,23 +68,7 @@ public class Main {
 		} finally {
 			session2.close();
 		}
-		
-		Session session3 = HibernateUtil.getSessionFactory().openSession();
-		try {
-			Criteria criteria2 = session3.createCriteria(Student.class, "student");
-			criteria2.createAlias("student.courses", "c");
-			criteria2.add(Restrictions.eq("c.language", "italian"));
-
-			List<Student> students2 = (List<Student>) criteria2.list();
-
-			for (Student student : students2) {
-				System.out.println(student.toString());
-			}
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		} finally {
-			session3.close();
-		}
+			
 	}
 
 	@SuppressWarnings("unused")
@@ -94,9 +77,9 @@ public class Main {
 		person.setName("Mike");
 		session.save(person);
 		Transcript transcript1 = new Transcript("swr12");
-		Student student1 = new Student("Eswar", transcript1, null, null, null);
+		Student student1 = new Student("Eswar", transcript1, null, null);
 		Transcript transcript2 = new Transcript("dnl21");
-		Student student2 = new Student("Daniel", transcript2, null, null, null);
+		Student student2 = new Student("Daniel", transcript2, null, null);
 		session.save(student1);
 		session.save(student2);
 	}

@@ -24,12 +24,11 @@ public class Main {
 			List<Student> students = (List<Student>) criteria.list();
 			
 			for(Student student : students){
-				Set<Phone> phoneNumbers = new HashSet<Phone>();
-				Phone house = new Phone("house","32354353");
-				Phone mobile = new Phone("mobile","32354353");
-				phoneNumbers.add(house);
-				phoneNumbers.add(mobile);
-				student.setStudentPhoneNumbers(phoneNumbers);
+				//Set<Phone> phoneNumbers = new HashSet<Phone>();
+				Phone house = new Phone("house","32354353", student);
+				session.save(house);
+				Phone mobile = new Phone("mobile","32354353", student);
+				session.save(mobile);
 				session.save(student);
 			}
 			transaction.commit();

@@ -28,18 +28,14 @@ public class Student {
 	private String studentName;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
-	@JoinColumn(name="Transcript_ID")
+	@JoinColumn(name="TranscriptID")
 	private Transcript transcript;
-
-	@OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
-	private Set<Phone> studentPhoneNumbers = new HashSet<Phone>(0);
 
 	public Student() {}
 
-	public Student(String studentName, Transcript transcript, Set<Phone> studentPhoneNumbers) {
+	public Student(String studentName, Transcript transcript) {
 		this.studentName = studentName;
 		this.transcript = transcript;
-		this.studentPhoneNumbers = studentPhoneNumbers;
 	}
 
 	public long getStudentId() {
@@ -66,12 +62,5 @@ public class Student {
 		this.transcript = transcript;
 	}
 	
-	public Set<Phone> getStudentPhoneNumbers() {
-		return this.studentPhoneNumbers;
-	}
-
-	public void setStudentPhoneNumbers(Set<Phone> studentPhoneNumbers) {
-		this.studentPhoneNumbers = studentPhoneNumbers;
-	}
 }
 

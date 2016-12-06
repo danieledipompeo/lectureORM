@@ -32,19 +32,15 @@ public class Student {
 	@JoinColumn(name="TranscriptID")
 	private Transcript transcript;
 
-	@OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
-	private Set<Phone> studentPhoneNumbers = new HashSet<Phone>(0);
-	
 	@ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
 	@JoinColumn(name="AddressID")
 	private Address studentAddress;
 
 	public Student() {}
 
-	public Student(String studentName, Transcript transcript, Set<Phone> studentPhoneNumbers, Address studentAddress) {
+	public Student(String studentName, Transcript transcript, Address studentAddress) {
 		this.studentName = studentName;
 		this.transcript = transcript;
-		this.studentPhoneNumbers = studentPhoneNumbers;
 		this.studentAddress = studentAddress;
 	}
 
@@ -70,14 +66,6 @@ public class Student {
 	
 	public void setTranscript(Transcript transcript){
 		this.transcript = transcript;
-	}
-	
-	public Set<Phone> getStudentPhoneNumbers() {
-		return this.studentPhoneNumbers;
-	}
-
-	public void setStudentPhoneNumbers(Set<Phone> studentPhoneNumbers) {
-		this.studentPhoneNumbers = studentPhoneNumbers;
 	}
 	
 	public Address getStudentAddress() {

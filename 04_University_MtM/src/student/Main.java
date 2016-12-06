@@ -21,8 +21,13 @@ public class Main {
 			transaction = session.beginTransaction();
 
 			Set<Course> courses = new HashSet<Course>();
-			courses.add(new Course("Maths"));
-			courses.add(new Course("Computer Science"));
+			Course math = new Course("Maths");
+			Course cs = new Course("Computer Science");
+			session.save(math);
+			session.save(cs);
+			courses.add(math);
+			courses.add(cs);
+			
 
 			Criteria criteria = session.createCriteria(Student.class);
 			List<Student> students = (List<Student>) criteria.list();

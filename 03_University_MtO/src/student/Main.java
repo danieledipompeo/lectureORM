@@ -24,7 +24,6 @@ public class Main {
 				student.setStudentAddress(address);
 				session.save(student);
 			}
-			
 			transaction.commit();
 		} catch (HibernateException e) {
 			transaction.rollback();

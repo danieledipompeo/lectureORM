@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,11 +22,16 @@ class Phone {
 	@Column(name="PhoneNumber")
 	private String phoneNumber;
 
+	@ManyToOne
+	@JoinColumn(name="personID")
+	private Person owner;
+
 	public Phone() {}
 
-	public Phone(String phoneType, String phoneNumber) {
+	public Phone(String phoneType, String phoneNumber, Person p) {
 		this.phoneType = phoneType;
 		this.phoneNumber = phoneNumber;
+		this.owner = p;
 	}
 
 	public long getPhoneId() {
